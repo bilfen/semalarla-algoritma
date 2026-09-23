@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="tr">
+ <head><script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/telemetry_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akış Şemalarıyla Algoritmayı Gösteriyorum</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #29305c;
+      --paper: #fffdf3;
+      --purple: #6d57d8;
+      --blue: #39a9f8;
+      --yellow: #ffd84d;
+      --green: #39be7d;
+      --pink: #ff6c9d;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      font-family: "Alegreya Sans", sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    .app-shell {
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      padding: clamp(12px, 2.5vw, 30px);
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,.8) 0 3px, transparent 4px),
+        radial-gradient(circle at 88% 82%, rgba(255,255,255,.85) 0 4px, transparent 5px);
+    }
+
+    .a4-stage {
+      width: min(100%, 1120px);
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh) - 28px));
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 5px solid #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 18px 0 rgba(63, 66, 139, .14), 0 24px 55px rgba(53, 44, 113, .18);
+      background: var(--paper);
+    }
+
+    .dots {
+      position: absolute; inset: 0; pointer-events: none; opacity: .65;
+      background-image: radial-gradient(#dfd5ff 1.5px, transparent 1.5px);
+      background-size: 23px 23px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    .shape { position:absolute; pointer-events:none; z-index: 1; }
+    .star { color: var(--yellow); animation: twinkle 2.4s ease-in-out infinite; }
+    .note { color: var(--pink); animation: floaty 3s ease-in-out infinite; }
+    .code-chip {
+      color: #5e46bc; background:#ede8ff; border: 2px solid #d5caff;
+      padding: 6px 10px; border-radius: 13px; font-weight: 800; transform: rotate(-7deg);
+    }
+
+    .screen { position: relative; z-index: 2; min-height: 100%; }
+    .hidden-screen { display: none !important; }
+
+    .intro-screen {
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh) - 28px));
+      display: grid; place-items: center; padding: clamp(30px, 6vw, 72px) 24px;
+      text-align: center;
+    }
+    .intro-content { max-width: 710px; }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:7px; padding: 7px 15px;
+      border-radius: 999px; background:#fff1ae; border:2px solid #f4cf3b; font-weight:800;
+    }
+    .main-title { line-height: .91; letter-spacing: -.025em; text-wrap: balance; }
+    .subtitle { font-size: clamp(1.3rem, 2.7vw, 1.8rem); line-height:1.1; }
+
+    .robot-wrap { height: 240px; display:grid; place-items:center; margin: 13px 0; }
+    .robot { width: 170px; overflow: visible; filter: drop-shadow(0 12px 0 rgba(78,70,157,.14)); animation: dance 1.15s ease-in-out infinite alternate; transform-origin:center bottom; }
+    .robot .arm-left { transform-origin: 27px 100px; animation: armLeft .75s ease-in-out infinite alternate; }
+    .robot .arm-right { transform-origin: 142px 100px; animation: armRight .75s ease-in-out infinite alternate; }
+
+    .start-button, .replay-button {
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      min-width: 210px; min-height: 62px; border: 0; border-radius: 19px;
+      box-shadow: 0 7px 0 #d64a76, 0 12px 20px rgba(214,74,118,.24);
+      transform: translateY(0); transition: transform .16s ease, box-shadow .16s ease;
+      cursor:pointer;
+    }
+    .start-button:hover, .replay-button:hover { transform:translateY(3px); box-shadow:0 4px 0 #d64a76, 0 9px 14px rgba(214,74,118,.22); }
+    .start-button:focus-visible, .replay-button:focus-visible, .dance-card:focus-visible { outline:4px solid #243166; outline-offset:4px; }
+
+    .game-screen { padding: clamp(18px, 3.5vw, 38px); }
+    .game-top {
+      display:flex; gap:16px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+      margin-bottom: 20px;
+    }
+    .instruction-box {
+      max-width: 650px; padding: 14px 18px; border-radius: 19px;
+      background:#e5f6ff; border:3px solid #bee8ff;
+    }
+    .progress-pill {
+      display:flex; align-items:center; gap:9px; white-space:nowrap; border-radius:999px;
+      padding: 11px 16px; background:#fff3b8; border:3px solid #f2d448; font-weight:800; font-size:1.2rem;
+    }
+    .play-grid { display:grid; grid-template-columns:minmax(260px,.88fr) minmax(315px,1.12fr); gap:clamp(18px, 4vw, 44px); align-items:start; }
+    .panel-heading { display:flex; align-items:center; gap:8px; font-size:1.4rem; margin-bottom:11px; }
+    .card-tray {
+      min-height: 465px; padding: 16px; border-radius:25px;
+      background:#f5efff; border:3px dashed #bba9ee;
+      display:flex; flex-wrap:wrap; gap:12px; align-content:flex-start;
+    }
+    .dance-card {
+      width: calc(50% - 6px); min-height: 94px; padding: 12px 11px;
+      border:3px solid #fff; border-radius:18px; box-shadow:0 5px 0 rgba(73,58,139,.18);
+      cursor:grab; touch-action:none; user-select:none; position:relative;
+      display:flex; flex-direction:column; justify-content:center; text-align:left;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .dance-card:hover:not(.locked) { transform:translateY(-3px) rotate(-1deg); box-shadow:0 8px 0 rgba(73,58,139,.18); }
+    .dance-card.dragging { opacity:.94; box-shadow:0 16px 26px rgba(57,38,124,.29); z-index:20; cursor:grabbing; transition:none; }
+    .dance-card.locked { width:100%; min-height: 48px; cursor:default; box-shadow:none; border-width:2px; padding:8px 12px; }
+    .card-number { display:inline-grid; place-items:center; width:27px; height:27px; flex: 0 0 auto; border-radius:50%; background:rgba(255,255,255,.8); font-weight:800; margin-right:7px; }
+    .card-line { display:flex; align-items:center; font-size:1.12rem; line-height:1; }
+    .card-confirm { font-size:.98rem; font-weight:800; color:#137a44; margin:4px 0 0 34px; display:none; }
+    .dance-card.locked .card-confirm { display:none; }
+
+    .flow-area {
+      border-radius:27px; padding:17px 18px; background:#eafdff; border:3px solid #b7edf6;
+    }
+    .flow-list { max-width: 440px; margin:auto; }
+    .flow-node { position:relative; display:grid; place-items:center; text-align:center; font-weight:800; }
+    .flow-terminal {
+      min-height:43px; width:145px; margin:0 auto; border-radius:999px;
+      color:white; background:#6555c9; border:3px solid #5142ad; box-shadow:0 4px 0 #5142ad;
+    }
+    .flow-slot {
+      min-height:58px; padding:4px; border-radius:14px; border:3px dashed #86cdda; background:#fff;
+      transition:background .18s, border-color .18s, transform .18s;
+    }
+    .flow-slot.correct { background:#dffbe6; border:3px solid #45ba70; animation: pop .35s ease; }
+    .flow-slot.wrong { background:#ffe2e4; border-color:#f45b69; animation: shake .36s ease; }
+    .flow-arrow { height:16px; position:relative; margin:1px auto; width:2px; background:#5e78a2; }
+    .flow-arrow::after { content:""; position:absolute; bottom:-1px; left:-4px; width:9px; height:9px; border-right:3px solid #5e78a2; border-bottom:3px solid #5e78a2; transform:rotate(45deg); }
+    .slot-placeholder { color:#79a9b7; font-size:1rem; }
+
+    .feedback {
+      margin-top:18px; padding:13px 17px; border-radius:18px; min-height:67px;
+      display:flex; align-items:center; gap:12px; background:#fff; border:3px solid #dce4ff;
+    }
+    .feedback-state { display:none; }
+    .feedback-state.show { display:block; }
+    .feedback-state strong { display:block; font-size:1.2rem; }
+    .feedback-icon { flex:0 0 auto; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:#e6e1ff; }
+
+    .success-screen {
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh));
+      display:grid; place-items:center; padding:35px 22px; text-align:center;
+    }
+    .success-box { max-width:710px; }
+    .celebration-robot { width:185px; margin:16px auto; }
+    .success-message { font-size:clamp(1.2rem,2.5vw,1.6rem); line-height:1.15; }
+
+    .confetti { position:absolute; width:12px; height:20px; border-radius:3px; animation: fall 3.2s linear infinite; }
+    @keyframes dance { to { transform:rotate(5deg) translateY(-5px); } }
+    @keyframes armLeft { to { transform:rotate(-28deg); } }
+    @keyframes armRight { to { transform:rotate(30deg); } }
+    @keyframes floaty { 50% { transform:translateY(-11px) rotate(8deg); } }
+    @keyframes twinkle { 50% { transform:scale(1.22) rotate(18deg); } }
+    @keyframes pop { 50% { transform:scale(1.035); } }
+    @keyframes shake { 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    @keyframes fall { from { transform:translateY(-100px) rotate(0); } to { transform:translateY(850px) rotate(430deg); } }
+
+    @media (max-width: 720px) {
+      .a4-stage { border-radius:24px; }
+      .play-grid { grid-template-columns:1fr; }
+      .card-tray { min-height:220px; }
+      .dance-card { width:100%; min-height:62px; }
+      .flow-area { padding:13px; }
+      .robot-wrap { height:190px; }
+      .robot { width:145px; }
+    }
+  </style>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/data_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/resizing_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div class="app-shell">
+   <div class="a4-stage">
+    <div class="dots"></div><span class="shape star" style="top:7%;left:6%;font-size:31px;">★</span> <span class="shape star" style="top:15%;right:7%;font-size:23px;animation-delay:.5s;">✦</span> <span class="shape note" style="top:31%;left:8%;font-size:33px;">♫</span> <span class="shape note" style="bottom:11%;right:7%;font-size:39px;animation-delay:.5s;">♪</span> <span class="shape code-chip" style="top:47%;right:5%;">&lt;/&gt;</span> <span class="shape" style="bottom:8%;left:6%;width:32px;height:32px;background:#50d2c2;border-radius:9px;transform:rotate(19deg);"></span>
+    <section id="intro-screen" class="screen intro-screen" aria-labelledby="main-title">
+     <div class="intro-content">
+      <div data-template-id="intro-eyebrow" class="canva-tag eyebrow">
+       BİLİŞİM MACERASI
+      </div>
+      <h1 data-template-id="main-title" class="canva-text main-title mt-5 font-extrabold"></h1>
+      <p data-template-id="intro-subtitle" class="canva-text subtitle mt-4 font-bold"></p>
+      <div class="robot-wrap" aria-hidden="true">
+       <svg class="robot" viewbox="0 0 170 210" role="img"><path d="M85 25V12M72 12h26" stroke="#5142ad" stroke-width="6" stroke-linecap="round" /> <circle cx="85" cy="9" r="7" fill="#ffd84d" stroke="#5142ad" stroke-width="4" /> <rect x="46" y="29" width="79" height="67" rx="22" fill="#63c8ff" stroke="#5142ad" stroke-width="5" /> <rect x="57" y="43" width="57" height="35" rx="14" fill="#fffdf3" stroke="#5142ad" stroke-width="4" /> <circle cx="73" cy="60" r="7" fill="#29305c" /><circle cx="98" cy="60" r="7" fill="#29305c" /> <path d="M75 72 Q85 82 97 72" fill="none" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <g class="arm-left">
+         <path d="M48 77 L20 112 L9 100" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+         <path d="M48 77 L20 112 L9 100" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" />
+        </g> <g class="arm-right">
+         <path d="M122 77 L150 111 L163 96" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+         <path d="M122 77 L150 111 L163 96" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" />
+        </g> <rect x="57" y="95" width="56" height="58" rx="18" fill="#ffd84d" stroke="#5142ad" stroke-width="5" /> <path d="M85 107v26M73 120h24" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M69 152 L59 188 M101 152 L112 188" stroke="#5142ad" stroke-width="15" stroke-linecap="round" /> <path d="M52 191h19M104 191h19" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+       </svg>
+      </div><button id="start-button" data-template-id="start-button" type="button" class="canva-button start-button font-extrabold text-xl"></button>
+     </div>
+    </section>
+    <main id="game-screen" class="screen game-screen hidden-screen" aria-labelledby="game-heading">
+     <div class="game-top">
+      <div data-template-id="instruction-box" class="canva-banner instruction-box">
+       <h2 data-template-id="game-heading" class="canva-text font-extrabold text-2xl"></h2>
+       <p data-template-id="algorithm-tip" class="canva-text mt-1 font-medium"></p>
+      </div>
+      <div class="progress-pill" aria-live="polite"><i data-lucide="sparkles" width="23" height="23"></i> <span id="progress-count">0 / 7 adım tamamlandı</span>
+      </div>
+     </div>
+     <div class="play-grid">
+      <section aria-labelledby="cards-heading">
+       <h3 id="cards-heading" data-template-id="cards-heading" class="canva-text panel-heading font-extrabold"><i data-lucide="hand" width="25" height="25"></i><span data-template-id="cards-heading-text" class="canva-text"></span></h3>
+       <div id="card-tray" data-template-id="card-tray" class="canva-panel card-tray"><button type="button" class="dance-card" data-step="1" data-template-id="step-card-1" style="background:#ffd7e5;"> <span class="card-line"><span class="card-number">1</span><span data-template-id="step-text-1" class="canva-text"></span></span> <span data-template-id="step-correct-1" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="2" data-template-id="step-card-2" style="background:#fff0a9;"> <span class="card-line"><span class="card-number">2</span><span data-template-id="step-text-2" class="canva-text"></span></span> <span data-template-id="step-correct-2" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="3" data-template-id="step-card-3" style="background:#c6f3e5;"> <span class="card-line"><span class="card-number">3</span><span data-template-id="step-text-3" class="canva-text"></span></span> <span data-template-id="step-correct-3" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="4" data-template-id="step-card-4" style="background:#dce9ff;"> <span class="card-line"><span class="card-number">4</span><span data-template-id="step-text-4" class="canva-text"></span></span> <span data-template-id="step-correct-4" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="5" data-template-id="step-card-5" style="background:#e7dcff;"> <span class="card-line"><span class="card-number">5</span><span data-template-id="step-text-5" class="canva-text"></span></span> <span data-template-id="step-correct-5" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="6" data-template-id="step-card-6" style="background:#bdefff;"> <span class="card-line"><span class="card-number">6</span><span data-template-id="step-text-6" class="canva-text"></span></span> <span data-template-id="step-correct-6" class="canva-text card-confirm"></span> </button> <button type="button" class="dance-card" data-step="7" data-template-id="step-card-7" style="background:#ffdcb0;"> <span class="card-line"><span class="card-number">7</span><span data-template-id="step-text-7" class="canva-text"></span></span> <span data-template-id="step-correct-7" class="canva-text card-confirm"></span> </button>
+       </div>
+      </section>
+      <section aria-labelledby="flow-heading">
+       <h3 id="flow-heading" data-template-id="flow-heading" class="canva-text panel-heading font-extrabold"><i data-lucide="git-branch" width="25" height="25"></i><span data-template-id="flow-heading-text" class="canva-text"></span></h3>
+       <div data-template-id="flow-area" class="canva-panel flow-area">
+        <div class="flow-list">
+         <div data-template-id="flow-start" class="canva-tag flow-node flow-terminal"></div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="1">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="2">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="3">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="4">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="5">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="6">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="7">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder"></span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div data-template-id="flow-end" class="canva-tag flow-node flow-terminal"></div>
+        </div>
+       </div>
+      </section>
+     </div>
+     <aside class="feedback" aria-live="polite"><span class="feedback-icon"><i data-lucide="message-circle" width="21" height="21"></i></span>
+      <div id="feedback-default" class="feedback-state show"><strong data-template-id="feedback-ready-title" class="canva-text"></strong> <span data-template-id="feedback-ready-text" class="canva-text"></span>
+      </div>
+      <div id="feedback-correct" class="feedback-state"><strong data-template-id="feedback-correct-title" class="canva-text"></strong> <span data-template-id="feedback-correct-text" class="canva-text"></span>
+      </div>
+      <div id="feedback-wrong" class="feedback-state"><strong data-template-id="feedback-wrong-title" class="canva-text"></strong> <span data-template-id="feedback-wrong-text" class="canva-text"></span>
+      </div>
+     </aside>
+    </main>
+    <section id="success-screen" class="screen success-screen hidden-screen" aria-labelledby="success-heading">
+     <div class="success-box">
+      <div data-template-id="success-badge" class="canva-tag eyebrow">
+       AKIŞ ŞEMASI USTASI
+      </div>
+      <h2 data-template-id="success-heading" class="canva-text main-title mt-5 font-extrabold"></h2>
+      <p data-template-id="success-subtitle" class="canva-text subtitle mt-4 font-bold"></p>
+      <svg class="robot celebration-robot" viewbox="0 0 170 210" aria-hidden="true"><path d="M85 25V12M72 12h26" stroke="#5142ad" stroke-width="6" stroke-linecap="round" /><circle cx="85" cy="9" r="7" fill="#ffd84d" stroke="#5142ad" stroke-width="4" /> <rect x="46" y="29" width="79" height="67" rx="22" fill="#63c8ff" stroke="#5142ad" stroke-width="5" /><rect x="57" y="43" width="57" height="35" rx="14" fill="#fffdf3" stroke="#5142ad" stroke-width="4" /> <circle cx="73" cy="60" r="7" fill="#29305c" /><circle cx="98" cy="60" r="7" fill="#29305c" /><path d="M72 71 Q85 86 100 70" fill="none" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M48 77 L17 47M122 77 L152 47" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" /><path d="M48 77 L17 47M122 77 L152 47" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" /> <rect x="57" y="95" width="56" height="58" rx="18" fill="#ffd84d" stroke="#5142ad" stroke-width="5" /><path d="M85 107v26M73 120h24" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M69 152 L53 187 M101 152 L117 187" stroke="#5142ad" stroke-width="15" stroke-linecap="round" /><path d="M45 190h20M105 190h20" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+      </svg>
+      <p data-template-id="success-message" class="canva-text success-message font-bold"></p><button id="replay-button" data-template-id="replay-button" type="button" class="canva-button replay-button mt-7 font-extrabold text-xl"></button>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/editing_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b"></script>
+  <script>
+    const introScreen = document.getElementById("intro-screen");
+    const gameScreen = document.getElementById("game-screen");
+    const successScreen = document.getElementById("success-screen");
+    const cardTray = document.getElementById("card-tray");
+    const progressCount = document.getElementById("progress-count");
+    const feedbacks = {
+      default: document.getElementById("feedback-default"),
+      correct: document.getElementById("feedback-correct"),
+      wrong: document.getElementById("feedback-wrong")
+    };
+
+    let completed = 0;
+    let activeCard = null;
+    let originPlaceholder = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    function showFeedback(name) {
+      Object.values(feedbacks).forEach(el => el.classList.remove("show"));
+      feedbacks[name].classList.add("show");
+    }
+
+    function updateProgress() {
+      progressCount.textContent = completed + " / 7 adım yerleştirildi";
+    }
+
+    function shuffleCards() {
+      const cards = Array.from(cardTray.querySelectorAll(".dance-card"));
+      cards.sort(() => Math.random() - 0.5).forEach(card => cardTray.appendChild(card));
+    }
+
+    function resetGame() {
+      completed = 0;
+      updateProgress();
+      showFeedback("default");
+      document.querySelectorAll(".flow-slot").forEach(slot => {
+        slot.classList.remove("correct", "wrong");
+        const placeholder = document.createElement("span");
+        placeholder.dataset.templateId = "slot-empty";
+        placeholder.className = "canva-text slot-placeholder";
+        slot.replaceChildren(placeholder);
+      });
+      document.querySelectorAll(".dance-card").forEach(card => {
+        card.classList.remove("locked", "dragging");
+        card.style.position = "";
+        card.style.left = "";
+        card.style.top = "";
+        card.style.width = "";
+        card.style.zIndex = "";
+        card.disabled = false;
+        cardTray.appendChild(card);
+      });
+      shuffleCards();
+    }
+
+    function startGame() {
+      resetGame();
+      introScreen.classList.add("hidden-screen");
+      successScreen.classList.add("hidden-screen");
+      gameScreen.classList.remove("hidden-screen");
+    }
+
+    function completeGame() {
+      gameScreen.classList.add("hidden-screen");
+      successScreen.classList.remove("hidden-screen");
+    }
+
+    function getDropSlot(x, y) {
+      return Array.from(document.querySelectorAll(".flow-slot")).find(slot => {
+        const rect = slot.getBoundingClientRect();
+        return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      });
+    }
+
+    function beginDrag(event, card) {
+      if (card.classList.contains("locked")) return;
+      event.preventDefault();
+      const rect = card.getBoundingClientRect();
+      dragOffsetX = event.clientX - rect.left;
+      dragOffsetY = event.clientY - rect.top;
+      originPlaceholder = document.createElement("div");
+      originPlaceholder.style.width = rect.width + "px";
+      originPlaceholder.style.height = rect.height + "px";
+      originPlaceholder.style.borderRadius = "18px";
+      originPlaceholder.style.border = "2px dashed #c6b7ee";
+      card.parentNode.insertBefore(originPlaceholder, card);
+      document.body.appendChild(card);
+      activeCard = card;
+      card.classList.add("dragging");
+      card.style.position = "fixed";
+      card.style.width = rect.width + "px";
+      card.style.left = rect.left + "px";
+      card.style.top = rect.top + "px";
+      card.style.zIndex = "50";
+      card.setPointerCapture(event.pointerId);
+    }
+
+    function moveDrag(event) {
+      if (!activeCard) return;
+      activeCard.style.left = (event.clientX - dragOffsetX) + "px";
+      activeCard.style.top = (event.clientY - dragOffsetY) + "px";
+    }
+
+    function endDrag(event) {
+      if (!activeCard) return;
+      const card = activeCard;
+      const slot = getDropSlot(event.clientX, event.clientY);
+      card.classList.remove("dragging");
+      card.style.position = "";
+      card.style.left = "";
+      card.style.top = "";
+      card.style.width = "";
+      card.style.zIndex = "";
+
+      if (slot && !slot.querySelector(".dance-card")) {
+        originPlaceholder.remove();
+        slot.replaceChildren(card);
+        card.classList.add("locked");
+        card.disabled = true;
+        completed += 1;
+        updateProgress();
+        if (completed === 7) setTimeout(completeGame, 650);
+      } else {
+        originPlaceholder.replaceWith(card);
+      }
+
+      activeCard = null;
+      originPlaceholder = null;
+    }
+
+    function returnToIntro() {
+      resetGame();
+      gameScreen.classList.add("hidden-screen");
+      successScreen.classList.add("hidden-screen");
+      introScreen.classList.remove("hidden-screen");
+    }
+
+    document.getElementById("start-button").addEventListener("click", startGame);
+    document.getElementById("replay-button").addEventListener("click", returnToIntro);
+
+    document.querySelectorAll(".dance-card").forEach(card => {
+      card.addEventListener("pointerdown", event => beginDrag(event, card));
+    });
+    document.addEventListener("pointermove", moveDrag);
+    document.addEventListener("pointerup", endDrag);
+    document.addEventListener("pointercancel", endDrag);
+
+    lucide.createIcons();
+  </script>
+ </body>
+</html>
