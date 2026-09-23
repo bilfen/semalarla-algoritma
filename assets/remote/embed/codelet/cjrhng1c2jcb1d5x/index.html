@@ -326,14 +326,29 @@
       completed = 0;
       updateProgress();
       showFeedback("default");
+      // once yuvalarin icindeki kartlari topla (replaceChildren onlari yok eder)
+      const placedCards = [];
       document.querySelectorAll(".flow-slot").forEach(slot => {
         slot.classList.remove("correct", "wrong");
+        const card = slot.querySelector(".dance-card");
+        if (card) placedCards.push(card);
         const placeholder = document.createElement("span");
         placeholder.dataset.templateId = "slot-empty";
         placeholder.className = "canva-text slot-placeholder";
         slot.replaceChildren(placeholder);
       });
       document.querySelectorAll(".dance-card").forEach(card => {
+        card.classList.remove("locked", "dragging");
+        card.style.position = "";
+        card.style.left = "";
+        card.style.top = "";
+        card.style.width = "";
+        card.style.zIndex = "";
+        card.disabled = false;
+        cardTray.appendChild(card);
+      });
+      // yuvadan cikarilan kartlari da tepsiye geri koy
+      placedCards.forEach(card => {
         card.classList.remove("locked", "dragging");
         card.style.position = "";
         card.style.left = "";
