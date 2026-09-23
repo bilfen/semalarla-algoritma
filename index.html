@@ -1,59 +1,451 @@
-<!DOCTYPE html><html dir="ltr" lang="tr-TR" class="x-default-marker theme light classic x6brqfx x1yowkxt x19aimcq"><head><base href="/semalarla-algoritma/"><meta charset="utf-8"><title>Akış Şemalarıyla Algoritmayı Gösteriyorum</title><meta name="app-name" content="export_website"/><meta name="build-version" content="326ec9830db2e968b1911d3c4327ddebfbc02cae"/><meta name="build-release-name" content="20260914-23-326ec98"/><meta name="build-deployment-group" content="STABLE"/><meta name="viewport" content="width=device-width, initial-scale=1"><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">(function pushPageBuildIdentityToNativeShell(identity) {
-  if (typeof window === 'undefined') {
-    return;
-  }
-  if (Object.values(identity).every(value => value == null)) {
-    return;
-  }
-  const json = JSON.stringify(identity);
-  if (window.Android?.onPageBuildIdentityReady) {
-    // Android-shaped device
-    window.Android.onPageBuildIdentityReady(json);
-  } else if (window.Harmony?.onPageBuildIdentityReady) {
-    // HarmonyOS-shaped device
-    window.Harmony.onPageBuildIdentityReady(json);
-  } else if (window.webkit?.messageHandlers?.pageBuildIdentityReady) {
-    // iOS-shaped device
-    window.webkit.messageHandlers.pageBuildIdentityReady.postMessage(json);
-  } else if (window.ElectronBridge?.onPageBuildIdentityReady) {
-    // Canva desktop app
-    window.ElectronBridge.onPageBuildIdentityReady(json);
-  } else {
-    // No native platform detected. Nothing to notify.
-  }
-})({stack: 'export_website', variant:  null , version: '326ec9830db2e968b1911d3c4327ddebfbc02cae', releaseName: '20260914-23-326ec98', deploymentGroup: 'STABLE'});</script><link href="assets/76b14db79c2193c7.ltr.css" rel="stylesheet" integrity="sha512-qVsC3I8PVWUUADiy5YJIuxywks2NYmPTGroy/ktdEHPdmAie00aleZ21RzvT4cBlg0gEehr2ysH85JO4IyGuZw==" crossorigin="anonymous"><link href="assets/static_font_4.ltr.css" rel="stylesheet"><link href="assets/4f004f747e7be5c3.runtime.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-cfptBUa2ULHXTs9SXBJtcJHBkZHqYpLjWZ6ezkY/mrNp5qqLLhXG456gJh9G1c9ZfHt5xZEFCPRqanGKl5IOGA==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><link href="assets/4de0093cd9a5f681.s4le6a.vendor.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-L8swyCMgN7mX95XerJgG4PSWDsAmrBMAvWwbFMkTiHPPqcCVLpndRQvd1XBtJStwih/i5h+RN/902reB/BH4Rg==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><link href="assets/20a861f6e339ac61.vendor.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-VuVa1SF+gDIWGZ4pv2zZ7BUYV7yvrn6aR1rZ/8nlbmnOoHzZZ8EcU0sg1WI1r41bRojMEuupapLtV+Mf+1uK7Q==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><link href="assets/f702b3078c07e79a.strings.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-MAgi+HvL4lTrHXP5N5CLTb6N/QVxsjwptBVOfiEmzb8rH3ogIB5l4iza4SCw8rHGRyAqH5I+oaRof24DhcrL+g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><link href="assets/974710d14c489ecb.tr-TR.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-wm7dapxmtrJUglkmObjmKiyQx+zFpHHbX5NMzCY2TppQ5NHnM2P7Ui46BY36rLvW7k5HVwGnSYjz2DF6Mt1n3g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><link href="assets/f8a1480fcf6884b5.js" rel="preload" as="script" crossorigin="anonymous" integrity="sha512-Bxam0IoT+23lXMjJEkznEFTJWpVxnwVeaprtecMrOVxppusvQUJMFAFgQGWVvoPHJWkdHriQjADVPUttEaly/g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"><meta name="referrer" content="strict-origin-when-cross-origin"><meta property="og:title" content="Akış Şemalarıyla Algoritmayı Gösteriyorum"><meta property="og:type" content="website"><link rel="shortcut icon" href="assets/images/2d0b56e7e51cf11036ad8734bdb67e2d.png"><link rel="icon" href="assets/images/e53c4bd8da5e491d9ab09e7cf0daf874.png" sizes="192x192"><link rel="apple-touch-icon" href="assets/images/725b756a69a7d4c235070e51acd85560.png" sizes="180x180"><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">window['__canva_website_bootstrap__'] = JSON.parse('{"A":"ASSISTANT_THREAD_CODELET#95e8a42d-bd4f-44b2-b7cc-6806052a7dfb","B":"eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwia2lkIjoia2lkLTE3Nzg0NzAzNjEzOTQifQ..pddt3OZX_aKBQCVr.O-mwYdllZIe-5CFFBFyugBUJGT5LGU7Q3FvTGoHC0GPMB23LYCMrJq6zfgUsFn0iap_1q62MzHZ0LYPJOkdrxeHX-CcIdr5pRVqIRr04y63iaXoWTKXbv15wo6vmsu7zoHGFIKoR9tHZ.dk9oD-OfDvzQeww656dfuA"}');</script><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">
-      document.addEventListener('contextmenu', (e) => {
-        const isMedia = ['img', 'image', 'video', 'svg', 'picture'].some(
-          tagName => tagName.localeCompare(e.target.tagName, undefined, { sensitivity: 'base' }) === 0,
-        );
-        isMedia && e.preventDefault();
-      });
-    </script><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">
-  const lang = navigator.language ? navigator.language : 'en';
-  window.canva_installFooter = (container) => {
-    if (!(container instanceof HTMLDivElement)) {
-      return;
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akış Şemalarıyla Algoritmayı Gösteriyorum</title>
+<script src="https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/telemetry_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akış Şemalarıyla Algoritmayı Gösteriyorum</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #29305c;
+      --paper: #fffdf3;
+      --purple: #6d57d8;
+      --blue: #39a9f8;
+      --yellow: #ffd84d;
+      --green: #39be7d;
+      --pink: #ff6c9d;
     }
-    fetch('_footer?lang=' + encodeURIComponent(lang)).then(response => {
-      if (response.status !== 200) {
-        return;
-      }
-      response.text().then(footerStr => {
-        container.innerHTML = '';
-        const div = document.createElement('div');
-        div.innerHTML = footerStr;
-        for (const child of [...div.children]) {
-          if (child.tagName.toLowerCase() !== 'script') {
-            container.append(child);
-          }
-        }
 
-        (() => { !function(){"use strict";const t={active:"active"},o={modalBackdrop:"modal_backdrop",termsAndConditionsModal:"modal",termsAndConditionsModalCloseButton:"form_close_initial",reportButton:"form_report",privacyPolicyModal:"privacy_policy_modal",privacyPolicyModalCloseButton:"form_close_privacy_policy",termsAndSupportFooterButton:"report_button",privacyPolicyFooterButton:"privacy_policy_button"};!function(){const c=document.getElementById(o.modalBackdrop);null!=c&&(function(c){const e=document.getElementById(o.termsAndConditionsModal),n=document.getElementById(o.termsAndConditionsModalCloseButton),l=document.getElementById(o.reportButton),i=document.getElementById(o.termsAndSupportFooterButton);if(null==e||null==n||null==l||null==i)return;l.onclick=()=>{const{origin:t,pathname:o}=window.location,c=t+o,e=l.dataset.reportUrl+encodeURIComponent(c);window.open(e)};const s=()=>{c.classList.remove(t.active),e.classList.remove(t.active),i.classList.remove(t.active),i.focus(),c.onclick=null};n.onclick=s,i.onclick=()=>{c.classList.add(t.active),c.onclick=s,e.classList.add(t.active),i.classList.add(t.active)}}(c),function(c){const e=document.getElementById(o.privacyPolicyModal),n=document.getElementById(o.privacyPolicyModalCloseButton),l=document.getElementById(o.privacyPolicyFooterButton);if(null==e||null==n||null==l)return;const i=()=>{c.classList.remove(t.active),e.classList.remove(t.active),l.classList.remove(t.active),l.focus(),c.onclick=null};n.onclick=i,l.onclick=()=>{c.classList.add(t.active),c.onclick=i,e.classList.add(t.active),l.classList.add(t.active)}}(c))}()}(); })();
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      font-family: "Alegreya Sans", sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    .app-shell {
+      width: 100%;
+      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      padding: clamp(12px, 2.5vw, 30px);
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,.8) 0 3px, transparent 4px),
+        radial-gradient(circle at 88% 82%, rgba(255,255,255,.85) 0 4px, transparent 5px);
+    }
+
+    .a4-stage {
+      width: min(100%, 1120px);
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh) - 28px));
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 5px solid #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 18px 0 rgba(63, 66, 139, .14), 0 24px 55px rgba(53, 44, 113, .18);
+      background: var(--paper);
+    }
+
+    .dots {
+      position: absolute; inset: 0; pointer-events: none; opacity: .65;
+      background-image: radial-gradient(#dfd5ff 1.5px, transparent 1.5px);
+      background-size: 23px 23px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    .shape { position:absolute; pointer-events:none; z-index: 1; }
+    .star { color: var(--yellow); animation: twinkle 2.4s ease-in-out infinite; }
+    .note { color: var(--pink); animation: floaty 3s ease-in-out infinite; }
+    .code-chip {
+      color: #5e46bc; background:#ede8ff; border: 2px solid #d5caff;
+      padding: 6px 10px; border-radius: 13px; font-weight: 800; transform: rotate(-7deg);
+    }
+
+    .screen { position: relative; z-index: 2; min-height: 100%; }
+    .hidden-screen { display: none !important; }
+
+    .intro-screen {
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh) - 28px));
+      display: grid; place-items: center; padding: clamp(30px, 6vw, 72px) 24px;
+      text-align: center;
+    }
+    .intro-content { max-width: 710px; }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:7px; padding: 7px 15px;
+      border-radius: 999px; background:#fff1ae; border:2px solid #f4cf3b; font-weight:800;
+    }
+    .main-title { line-height: .91; letter-spacing: -.025em; text-wrap: balance; }
+    .subtitle { font-size: clamp(1.3rem, 2.7vw, 1.8rem); line-height:1.1; }
+
+    .robot-wrap { height: 240px; display:grid; place-items:center; margin: 13px 0; }
+    .robot { width: 170px; overflow: visible; filter: drop-shadow(0 12px 0 rgba(78,70,157,.14)); animation: dance 1.15s ease-in-out infinite alternate; transform-origin:center bottom; }
+    .robot .arm-left { transform-origin: 27px 100px; animation: armLeft .75s ease-in-out infinite alternate; }
+    .robot .arm-right { transform-origin: 142px 100px; animation: armRight .75s ease-in-out infinite alternate; }
+
+    .start-button, .replay-button {
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      min-width: 210px; min-height: 62px; border: 0; border-radius: 19px;
+      box-shadow: 0 7px 0 #d64a76, 0 12px 20px rgba(214,74,118,.24);
+      transform: translateY(0); transition: transform .16s ease, box-shadow .16s ease;
+      cursor:pointer;
+    }
+    .start-button:hover, .replay-button:hover { transform:translateY(3px); box-shadow:0 4px 0 #d64a76, 0 9px 14px rgba(214,74,118,.22); }
+    .start-button:focus-visible, .replay-button:focus-visible, .dance-card:focus-visible { outline:4px solid #243166; outline-offset:4px; }
+
+    .game-screen { padding: clamp(18px, 3.5vw, 38px); }
+    .game-top {
+      display:flex; gap:16px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+      margin-bottom: 20px;
+    }
+    .instruction-box {
+      max-width: 650px; padding: 14px 18px; border-radius: 19px;
+      background:#e5f6ff; border:3px solid #bee8ff;
+    }
+    .progress-pill {
+      display:flex; align-items:center; gap:9px; white-space:nowrap; border-radius:999px;
+      padding: 11px 16px; background:#fff3b8; border:3px solid #f2d448; font-weight:800; font-size:1.2rem;
+    }
+    .play-grid { display:grid; grid-template-columns:minmax(260px,.88fr) minmax(315px,1.12fr); gap:clamp(18px, 4vw, 44px); align-items:start; }
+    .panel-heading { display:flex; align-items:center; gap:8px; font-size:1.4rem; margin-bottom:11px; }
+    .card-tray {
+      min-height: 465px; padding: 16px; border-radius:25px;
+      background:#f5efff; border:3px dashed #bba9ee;
+      display:flex; flex-wrap:wrap; gap:12px; align-content:flex-start;
+    }
+    .dance-card {
+      width: calc(50% - 6px); min-height: 94px; padding: 12px 11px;
+      border:3px solid #fff; border-radius:18px; box-shadow:0 5px 0 rgba(73,58,139,.18);
+      cursor:grab; touch-action:none; user-select:none; position:relative;
+      display:flex; flex-direction:column; justify-content:center; text-align:left;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .dance-card:hover:not(.locked) { transform:translateY(-3px) rotate(-1deg); box-shadow:0 8px 0 rgba(73,58,139,.18); }
+    .dance-card.dragging { opacity:.94; box-shadow:0 16px 26px rgba(57,38,124,.29); z-index:20; cursor:grabbing; transition:none; }
+    .dance-card.locked { width:100%; min-height: 48px; cursor:default; box-shadow:none; border-width:2px; padding:8px 12px; }
+    .card-number { display:inline-grid; place-items:center; width:27px; height:27px; flex: 0 0 auto; border-radius:50%; background:rgba(255,255,255,.8); font-weight:800; margin-right:7px; }
+    .card-line { display:flex; align-items:center; font-size:1.12rem; line-height:1; }
+    .card-confirm { font-size:.98rem; font-weight:800; color:#137a44; margin:4px 0 0 34px; display:none; }
+    .dance-card.locked .card-confirm { display:none; }
+
+    .flow-area {
+      border-radius:27px; padding:17px 18px; background:#eafdff; border:3px solid #b7edf6;
+    }
+    .flow-list { max-width: 440px; margin:auto; }
+    .flow-node { position:relative; display:grid; place-items:center; text-align:center; font-weight:800; }
+    .flow-terminal {
+      min-height:43px; width:145px; margin:0 auto; border-radius:999px;
+      color:white; background:#6555c9; border:3px solid #5142ad; box-shadow:0 4px 0 #5142ad;
+    }
+    .flow-slot {
+      min-height:58px; padding:4px; border-radius:14px; border:3px dashed #86cdda; background:#fff;
+      transition:background .18s, border-color .18s, transform .18s;
+    }
+    .flow-slot.correct { background:#dffbe6; border:3px solid #45ba70; animation: pop .35s ease; }
+    .flow-slot.wrong { background:#ffe2e4; border-color:#f45b69; animation: shake .36s ease; }
+    .flow-arrow { height:16px; position:relative; margin:1px auto; width:2px; background:#5e78a2; }
+    .flow-arrow::after { content:""; position:absolute; bottom:-1px; left:-4px; width:9px; height:9px; border-right:3px solid #5e78a2; border-bottom:3px solid #5e78a2; transform:rotate(45deg); }
+    .slot-placeholder { color:#79a9b7; font-size:1rem; }
+
+    .feedback {
+      margin-top:18px; padding:13px 17px; border-radius:18px; min-height:67px;
+      display:flex; align-items:center; gap:12px; background:#fff; border:3px solid #dce4ff;
+    }
+    .feedback-state { display:none; }
+    .feedback-state.show { display:block; }
+    .feedback-state strong { display:block; font-size:1.2rem; }
+    .feedback-icon { flex:0 0 auto; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:#e6e1ff; }
+
+    .success-screen {
+      min-height: min(870px, calc(100 * min(var(--vh, 1vh), 1vh));
+      display:grid; place-items:center; padding:35px 22px; text-align:center;
+    }
+    .success-box { max-width:710px; }
+    .celebration-robot { width:185px; margin:16px auto; }
+    .success-message { font-size:clamp(1.2rem,2.5vw,1.6rem); line-height:1.15; }
+
+    .confetti { position:absolute; width:12px; height:20px; border-radius:3px; animation: fall 3.2s linear infinite; }
+    @keyframes dance { to { transform:rotate(5deg) translateY(-5px); } }
+    @keyframes armLeft { to { transform:rotate(-28deg); } }
+    @keyframes armRight { to { transform:rotate(30deg); } }
+    @keyframes floaty { 50% { transform:translateY(-11px) rotate(8deg); } }
+    @keyframes twinkle { 50% { transform:scale(1.22) rotate(18deg); } }
+    @keyframes pop { 50% { transform:scale(1.035); } }
+    @keyframes shake { 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    @keyframes fall { from { transform:translateY(-100px) rotate(0); } to { transform:translateY(850px) rotate(430deg); } }
+
+    @media (max-width: 720px) {
+      .a4-stage { border-radius:24px; }
+      .play-grid { grid-template-columns:1fr; }
+      .card-tray { min-height:220px; }
+      .dance-card { width:100%; min-height:62px; }
+      .flow-area { padding:13px; }
+      .robot-wrap { height:190px; }
+      .robot { width:145px; }
+    }
+  </style>
+  <script src="https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/data_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b" type="text/javascript"></script>
+  <script src="https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/resizing_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b" type="text/javascript"></script>
+ 
+</head>
+<body>
+
+  <div class="app-shell">
+   <div class="a4-stage">
+    <div class="dots"></div><span class="shape star" style="top:7%;left:6%;font-size:31px;">★</span> <span class="shape star" style="top:15%;right:7%;font-size:23px;animation-delay:.5s;">✦</span> <span class="shape note" style="top:31%;left:8%;font-size:33px;">♫</span> <span class="shape note" style="bottom:11%;right:7%;font-size:39px;animation-delay:.5s;">♪</span> <span class="shape code-chip" style="top:47%;right:5%;">&lt;/&gt;</span> <span class="shape" style="bottom:8%;left:6%;width:32px;height:32px;background:#50d2c2;border-radius:9px;transform:rotate(19deg);"></span>
+    <section id="intro-screen" class="screen intro-screen" aria-labelledby="main-title">
+     <div class="intro-content">
+      <div data-template-id="intro-eyebrow" class="canva-tag eyebrow">
+       BİLİŞİM MACERASI
+      </div>
+      <h1 data-template-id="main-title" class="canva-text main-title mt-5 font-extrabold">AKIŞ ŞEMALARIYLA ALGORİTMAYI GÖSTERİYORUM</h1>
+      <p data-template-id="intro-subtitle" class="canva-text subtitle mt-4 font-bold">Dansın algoritmasını doğru sıraya yerleştir!</p>
+      <div class="robot-wrap" aria-hidden="true">
+       <svg class="robot" viewbox="0 0 170 210" role="img"><path d="M85 25V12M72 12h26" stroke="#5142ad" stroke-width="6" stroke-linecap="round" /> <circle cx="85" cy="9" r="7" fill="#ffd84d" stroke="#5142ad" stroke-width="4" /> <rect x="46" y="29" width="79" height="67" rx="22" fill="#63c8ff" stroke="#5142ad" stroke-width="5" /> <rect x="57" y="43" width="57" height="35" rx="14" fill="#fffdf3" stroke="#5142ad" stroke-width="4" /> <circle cx="73" cy="60" r="7" fill="#29305c" /><circle cx="98" cy="60" r="7" fill="#29305c" /> <path d="M75 72 Q85 82 97 72" fill="none" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <g class="arm-left">
+         <path d="M48 77 L20 112 L9 100" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+         <path d="M48 77 L20 112 L9 100" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" />
+        </g> <g class="arm-right">
+         <path d="M122 77 L150 111 L163 96" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+         <path d="M122 77 L150 111 L163 96" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" />
+        </g> <rect x="57" y="95" width="56" height="58" rx="18" fill="#ffd84d" stroke="#5142ad" stroke-width="5" /> <path d="M85 107v26M73 120h24" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M69 152 L59 188 M101 152 L112 188" stroke="#5142ad" stroke-width="15" stroke-linecap="round" /> <path d="M52 191h19M104 191h19" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+       </svg>
+      </div><button id="start-button" data-template-id="start-button" type="button" class="canva-button start-button font-extrabold text-xl">BAŞLA ▶</button>
+     </div>
+    </section>
+    <main id="game-screen" class="screen game-screen hidden-screen" aria-labelledby="game-heading">
+     <div class="game-top">
+      <div data-template-id="instruction-box" class="canva-banner instruction-box">
+       <h2 data-template-id="game-heading" class="canva-text font-extrabold text-2xl">Dans adımlarını doğru sıraya yerleştir!</h2>
+       <p data-template-id="algorithm-tip" class="canva-text mt-1 font-medium">Adımları istediğin sırayla yerleştir; senin algoritman doğru!</p>
+      </div>
+      <div class="progress-pill" aria-live="polite"><i data-lucide="sparkles" width="23" height="23"></i> <span id="progress-count">0 / 7 adım tamamlandı</span>
+      </div>
+     </div>
+     <div class="play-grid">
+      <section aria-labelledby="cards-heading">
+       <h3 id="cards-heading" data-template-id="cards-heading" class="canva-text panel-heading font-extrabold"><i data-lucide="hand" width="25" height="25"></i><span data-template-id="cards-heading-text" class="canva-text">Dans adımları</span></h3>
+       <div id="card-tray" data-template-id="card-tray" class="canva-panel card-tray"><button type="button" class="dance-card" data-step="1" data-template-id="step-card-1" style="background:#ffd7e5;"> <span class="card-line"><span class="card-number">1</span><span data-template-id="step-text-1" class="canva-text">Müziği aç.</span></span> <span data-template-id="step-correct-1" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="2" data-template-id="step-card-2" style="background:#fff0a9;"> <span class="card-line"><span class="card-number">2</span><span data-template-id="step-text-2" class="canva-text">Kollarını iki yana aç.</span></span> <span data-template-id="step-correct-2" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="3" data-template-id="step-card-3" style="background:#c6f3e5;"> <span class="card-line"><span class="card-number">3</span><span data-template-id="step-text-3" class="canva-text">Sağa doğru bir adım at.</span></span> <span data-template-id="step-correct-3" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="4" data-template-id="step-card-4" style="background:#dce9ff;"> <span class="card-line"><span class="card-number">4</span><span data-template-id="step-text-4" class="canva-text">Sol ayağını öne koy.</span></span> <span data-template-id="step-correct-4" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="5" data-template-id="step-card-5" style="background:#e7dcff;"> <span class="card-line"><span class="card-number">5</span><span data-template-id="step-text-5" class="canva-text">Ellerini çırp.</span></span> <span data-template-id="step-correct-5" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="6" data-template-id="step-card-6" style="background:#bdefff;"> <span class="card-line"><span class="card-number">6</span><span data-template-id="step-text-6" class="canva-text">Sağa ve sola dön.</span></span> <span data-template-id="step-correct-6" class="canva-text card-confirm">✓ Doğru!</span> </button> <button type="button" class="dance-card" data-step="7" data-template-id="step-card-7" style="background:#ffdcb0;"> <span class="card-line"><span class="card-number">7</span><span data-template-id="step-text-7" class="canva-text">Dansı bitir ve gülümse.</span></span> <span data-template-id="step-correct-7" class="canva-text card-confirm">✓ Doğru!</span> </button>
+       </div>
+      </section>
+      <section aria-labelledby="flow-heading">
+       <h3 id="flow-heading" data-template-id="flow-heading" class="canva-text panel-heading font-extrabold"><i data-lucide="git-branch" width="25" height="25"></i><span data-template-id="flow-heading-text" class="canva-text">Akış şeması</span></h3>
+       <div data-template-id="flow-area" class="canva-panel flow-area">
+        <div class="flow-list">
+         <div data-template-id="flow-start" class="canva-tag flow-node flow-terminal">BAŞLA</div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="1">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="2">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="3">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="4">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="5">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="6">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div class="flow-node flow-slot" data-slot="7">
+          <span data-template-id="slot-empty" class="canva-text slot-placeholder">Kartı buraya bırak</span>
+         </div>
+         <div class="flow-arrow"></div>
+         <div data-template-id="flow-end" class="canva-tag flow-node flow-terminal">BİTİR</div>
+        </div>
+       </div>
+      </section>
+     </div>
+     <aside class="feedback" aria-live="polite"><span class="feedback-icon"><i data-lucide="message-circle" width="21" height="21"></i></span>
+      <div id="feedback-default" class="feedback-state show"><strong data-template-id="feedback-ready-title" class="canva-text">Hazır mısın?</strong> <span data-template-id="feedback-ready-text" class="canva-text">Bir kartı tut ve doğru kutuya bırak.</span>
+      </div>
+      <div id="feedback-correct" class="feedback-state"><strong data-template-id="feedback-correct-title" class="canva-text">✓ Doğru!</strong> <span data-template-id="feedback-correct-text" class="canva-text">Harika! Bu adım doğru yerde! 🎉</span>
+      </div>
+      <div id="feedback-wrong" class="feedback-state"><strong data-template-id="feedback-wrong-title" class="canva-text">✗ Tekrar düşün!</strong> <span data-template-id="feedback-wrong-text" class="canva-text">Algoritmanın adımlarını baştan sona düşün. Bu adım gerçekten burada mı?</span>
+      </div>
+     </aside>
+    </main>
+    <section id="success-screen" class="screen success-screen hidden-screen" aria-labelledby="success-heading">
+     <div class="success-box">
+      <div data-template-id="success-badge" class="canva-tag eyebrow">
+       AKIŞ ŞEMASI USTASI
+      </div>
+      <h2 data-template-id="success-heading" class="canva-text main-title mt-5 font-extrabold">🎉 HARİKA! ALGORİTMAYI TAMAMLADIN!</h2>
+      <p data-template-id="success-subtitle" class="canva-text subtitle mt-4 font-bold">Dansın bütün adımlarını doğru sıraya koydun!</p>
+      <svg class="robot celebration-robot" viewbox="0 0 170 210" aria-hidden="true"><path d="M85 25V12M72 12h26" stroke="#5142ad" stroke-width="6" stroke-linecap="round" /><circle cx="85" cy="9" r="7" fill="#ffd84d" stroke="#5142ad" stroke-width="4" /> <rect x="46" y="29" width="79" height="67" rx="22" fill="#63c8ff" stroke="#5142ad" stroke-width="5" /><rect x="57" y="43" width="57" height="35" rx="14" fill="#fffdf3" stroke="#5142ad" stroke-width="4" /> <circle cx="73" cy="60" r="7" fill="#29305c" /><circle cx="98" cy="60" r="7" fill="#29305c" /><path d="M72 71 Q85 86 100 70" fill="none" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M48 77 L17 47M122 77 L152 47" fill="none" stroke="#5142ad" stroke-width="13" stroke-linecap="round" /><path d="M48 77 L17 47M122 77 L152 47" fill="none" stroke="#ff9dbc" stroke-width="7" stroke-linecap="round" /> <rect x="57" y="95" width="56" height="58" rx="18" fill="#ffd84d" stroke="#5142ad" stroke-width="5" /><path d="M85 107v26M73 120h24" stroke="#f15e91" stroke-width="5" stroke-linecap="round" /> <path d="M69 152 L53 187 M101 152 L117 187" stroke="#5142ad" stroke-width="15" stroke-linecap="round" /><path d="M45 190h20M105 190h20" stroke="#5142ad" stroke-width="13" stroke-linecap="round" />
+      </svg>
+      <p data-template-id="success-message" class="canva-text success-message font-bold">Bir algoritmada adımların doğru sırada olması çok önemlidir.</p><button id="replay-button" data-template-id="replay-button" type="button" class="canva-button replay-button mt-7 font-extrabold text-xl">TEKRAR OYNA 🔄</button>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script src="https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/editing_sdk.js?pin_id=dbc5c1c9258d31aeaffd312668dd983b"></script>
+  <script>
+    const introScreen = document.getElementById("intro-screen");
+    const gameScreen = document.getElementById("game-screen");
+    const successScreen = document.getElementById("success-screen");
+    const cardTray = document.getElementById("card-tray");
+    const progressCount = document.getElementById("progress-count");
+    const feedbacks = {
+      default: document.getElementById("feedback-default"),
+      correct: document.getElementById("feedback-correct"),
+      wrong: document.getElementById("feedback-wrong")
+    };
+
+    let completed = 0;
+    let activeCard = null;
+    let originPlaceholder = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    function showFeedback(name) {
+      Object.values(feedbacks).forEach(el => el.classList.remove("show"));
+      feedbacks[name].classList.add("show");
+    }
+
+    function updateProgress() {
+      progressCount.textContent = completed + " / 7 adım yerleştirildi";
+    }
+
+    function shuffleCards() {
+      const cards = Array.from(cardTray.querySelectorAll(".dance-card"));
+      cards.sort(() => Math.random() - 0.5).forEach(card => cardTray.appendChild(card));
+    }
+
+    function resetGame() {
+      completed = 0;
+      updateProgress();
+      showFeedback("default");
+      document.querySelectorAll(".flow-slot").forEach(slot => {
+        slot.classList.remove("correct", "wrong");
+        const placeholder = document.createElement("span");
+        placeholder.dataset.templateId = "slot-empty";
+        placeholder.className = "canva-text slot-placeholder";
+        slot.replaceChildren(placeholder);
       });
+      document.querySelectorAll(".dance-card").forEach(card => {
+        card.classList.remove("locked", "dragging");
+        card.style.position = "";
+        card.style.left = "";
+        card.style.top = "";
+        card.style.width = "";
+        card.style.zIndex = "";
+        card.disabled = false;
+        cardTray.appendChild(card);
+      });
+      shuffleCards();
+    }
+
+    function startGame() {
+      resetGame();
+      introScreen.classList.add("hidden-screen");
+      successScreen.classList.add("hidden-screen");
+      gameScreen.classList.remove("hidden-screen");
+    }
+
+    function completeGame() {
+      gameScreen.classList.add("hidden-screen");
+      successScreen.classList.remove("hidden-screen");
+    }
+
+    function getDropSlot(x, y) {
+      return Array.from(document.querySelectorAll(".flow-slot")).find(slot => {
+        const rect = slot.getBoundingClientRect();
+        return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      });
+    }
+
+    function beginDrag(event, card) {
+      if (card.classList.contains("locked")) return;
+      event.preventDefault();
+      const rect = card.getBoundingClientRect();
+      dragOffsetX = event.clientX - rect.left;
+      dragOffsetY = event.clientY - rect.top;
+      originPlaceholder = document.createElement("div");
+      originPlaceholder.style.width = rect.width + "px";
+      originPlaceholder.style.height = rect.height + "px";
+      originPlaceholder.style.borderRadius = "18px";
+      originPlaceholder.style.border = "2px dashed #c6b7ee";
+      card.parentNode.insertBefore(originPlaceholder, card);
+      document.body.appendChild(card);
+      activeCard = card;
+      card.classList.add("dragging");
+      card.style.position = "fixed";
+      card.style.width = rect.width + "px";
+      card.style.left = rect.left + "px";
+      card.style.top = rect.top + "px";
+      card.style.zIndex = "50";
+      card.setPointerCapture(event.pointerId);
+    }
+
+    function moveDrag(event) {
+      if (!activeCard) return;
+      activeCard.style.left = (event.clientX - dragOffsetX) + "px";
+      activeCard.style.top = (event.clientY - dragOffsetY) + "px";
+    }
+
+    function endDrag(event) {
+      if (!activeCard) return;
+      const card = activeCard;
+      const slot = getDropSlot(event.clientX, event.clientY);
+      card.classList.remove("dragging");
+      card.style.position = "";
+      card.style.left = "";
+      card.style.top = "";
+      card.style.width = "";
+      card.style.zIndex = "";
+
+      if (slot && !slot.querySelector(".dance-card")) {
+        originPlaceholder.remove();
+        slot.replaceChildren(card);
+        card.classList.add("locked");
+        card.disabled = true;
+        completed += 1;
+        updateProgress();
+        if (completed === 7) setTimeout(completeGame, 650);
+      } else {
+        originPlaceholder.replaceWith(card);
+      }
+
+      activeCard = null;
+      originPlaceholder = null;
+    }
+
+    function returnToIntro() {
+      resetGame();
+      gameScreen.classList.add("hidden-screen");
+      successScreen.classList.add("hidden-screen");
+      introScreen.classList.remove("hidden-screen");
+    }
+
+    document.getElementById("start-button").addEventListener("click", startGame);
+    document.getElementById("replay-button").addEventListener("click", returnToIntro);
+
+    document.querySelectorAll(".dance-card").forEach(card => {
+      card.addEventListener("pointerdown", event => beginDrag(event, card));
     });
-  }
-</script><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">
-    window.C_CAPTCHA_IMPLEMENTATION = 'RECAPTCHA';
-</script><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">
-    window.C_CAPTCHA_KEY = '6LdpNmIrAAAAAHQVezN3pBAfDjQQ2qUpo881f24o';
-</script></head><body><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">(function () {var classList = document.documentElement.classList;if (classList.contains('adaptive') && window.matchMedia('(prefers-color-scheme: dark)').matches) {classList.remove.apply(classList, ["x6brqfx","x1yowkxt","x19aimcq"]);classList.add.apply(classList, ["xo86nag","x1yowkxt","xntwwlm"]);}document.documentElement.classList.replace('adaptive', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');})();</script><div id="root"></div><script nonce="4ac671e4-49d3-4983-a30f-6c8530312976">(function() {window['__canva_public_path__'] = 'assets\/'; window['bootstrap'] = JSON.parse('{"base":{"A?":"B","L":false,"N":false,"E":"326ec9830db2e968b1911d3c4327ddebfbc02cae","j":"1840019","K":1789466462,"F":{"A?":"B"},"G":"CLIENT_FULL","I":"A","O":{"A?":"B"},"M":"/_online","U":[],"V":[],"a":{"K":"export_website","H":{}},"d":{"A":"wss://www.canva.com/_stream","B":{"F":"export_website"},"C":8388608},"b":{"A?":"H","C":{"a":"WEB"},"D":{"a":"WEB","c":"tr-TR"},"E":{},"P":[],"Q":[],"R":false,"S":false}},"page":{"A":{"B":{"A?":"B","A":1366.0,"B":768.0,"C":"D"},"C":{"A":1366.0,"B":768.0,"C":"D"},"Q":[],"R":[],"P":"tr-TR","D":"Akış Şemalarıyla Algoritmayı Gösteriyorum","F":[],"d":{},"G":{},"Y":{},"a":[],"b":[],"V":[],"W":[],"A":[{"A?":"i","a":"PB6DY42XVfwVxxhC","R":false,"S":false,"U":false,"Q":{},"W":[],"X":[],"H":[],"L":{},"C":{"A":1366.0,"B":768.0,"C":"D"},"w":{"A":[{"C":"#ffffff","D":0.0,"F":false,"J":false,"G":false,"H":false}],"B":[]},"r":[],"E":[{"A?":"BC","A":0.0,"B":0.0,"D":1366.0,"C":768.0,"E":0.0,"F":0.0,"BD":[],"BE":[],"BA":[],"BB":[],"Q":false,"S":false,"P":[],"5":{},"T":{},"W":{},"_":"LBVhw7CGhZJCh0qj","b":1366.0,"a":768.0,"z":{"A":{"A":"w:KS5H9iEEh","B":1},"B":{}},"y":{"A":{"A?":"O","A":{"A":{"A?":"S","A":{"A":"https://canva-hosted-embed.com/codelet/DP_587cad1965024bbebd3917232f679ad6/cjrhng1c2jcb1d5x","B":0,"C":"F"}},"B":{"A?":"O","A":{"__page-root":{"A?":"O","A":{"E":{"A?":"P","A":{"K":{"A?":"A","A":[{"A":"#8ee8ff","B":0.0,"C":0.0},{"A":"#b8a8ff","B":0.0,"C":1.0}],"B":135.0},"D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"algorithm-tip":{"A?":"O","A":{"A":{"A?":"A","A":"Adımları istediğin sırayla yerleştir; senin algoritman doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#44688a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"medium"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"card-tray":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#f5efff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"cards-heading":{"A?":"O","A":{"F":{"A?":"P","A":{"C":"#513e9a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"K":{"A?":"C","A":21.0}}},"cards-heading-text":{"A?":"O","A":{"A":{"A?":"A","A":"Dans adımları"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#513e9a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":21.0}}},"feedback-correct-text":{"A?":"O","A":{"A":{"A?":"A","A":"Harika! Bu adım doğru yerde! 🎉"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#287653","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"feedback-correct-title":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"feedback-ready-text":{"A?":"O","A":{"A":{"A?":"A","A":"Bir kartı tut ve doğru kutuya bırak."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#53637d","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"medium"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"feedback-ready-title":{"A?":"O","A":{"A":{"A?":"A","A":"Hazır mısın?"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#45358f","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"feedback-wrong-text":{"A?":"O","A":{"A":{"A?":"A","A":"Algoritmanın adımlarını baştan sona düşün. Bu adım gerçekten burada mı?"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#9d4054","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"feedback-wrong-title":{"A?":"O","A":{"A":{"A?":"A","A":"✗ Tekrar düşün!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#c83951","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"flow-area":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#eafdff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"flow-end":{"A?":"O","A":{"A":{"A?":"A","A":"BİTİR"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#6555c9","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#ffffff","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"flow-heading":{"A?":"O","A":{"F":{"A?":"P","A":{"C":"#16718a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"K":{"A?":"C","A":21.0}}},"flow-heading-text":{"A?":"O","A":{"A":{"A?":"A","A":"Akış şeması"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#16718a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":21.0}}},"flow-start":{"A?":"O","A":{"A":{"A?":"A","A":"BAŞLA"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#6555c9","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#ffffff","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"game-heading":{"A?":"O","A":{"A":{"A?":"A","A":"Dans adımlarını doğru sıraya yerleştir!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#334a7a","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":27.0}}},"instruction-box":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#e5f6ff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"intro-eyebrow":{"A?":"O","A":{"A":{"A?":"A","A":"BİLİŞİM MACERASI"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#fff1ae","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#554600","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"intro-subtitle":{"A?":"O","A":{"A":{"A?":"A","A":"Dansın algoritmasını doğru sıraya yerleştir!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"main-title":{"A?":"O","A":{"A":{"A?":"A","A":"AKIŞ ŞEMALARIYLA ALGORİTMAYI GÖSTERİYORUM"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#45358f","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":36.0},"L":{"A?":"C","A":-30.0},"M":{"A?":"C","A":0.95}}},"replay-button":{"A?":"O","A":{"A":{"A?":"A","A":"TEKRAR OYNA 🔄"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#ff6c9d","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#ffffff","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":22.0}}},"slot-empty":{"A?":"O","A":{"A":{"A?":"A","A":"Kartı buraya bırak"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#79a9b7","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"start-button":{"A?":"O","A":{"A":{"A?":"A","A":"BAŞLA ▶"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#ff6c9d","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#ffffff","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":24.0}}},"step-card-1":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#ffd7e5","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-2":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#fff0a9","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-3":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#c6f3e5","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-4":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#dce9ff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-5":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#e7dcff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-6":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#bdefff","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-card-7":{"A?":"O","A":{"E":{"A?":"P","A":{"C":"#ffdcb0","D":0.0,"F":false,"J":false,"G":false,"H":false}}}},"step-correct-1":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-2":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-3":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-4":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-5":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-6":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-correct-7":{"A?":"O","A":{"A":{"A?":"A","A":"✓ Doğru!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#137a44","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-1":{"A?":"O","A":{"A":{"A?":"A","A":"Müziği aç."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-2":{"A?":"O","A":{"A":{"A?":"A","A":"Kollarını iki yana aç."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-3":{"A?":"O","A":{"A":{"A?":"A","A":"Sağa doğru bir adım at."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-4":{"A?":"O","A":{"A":{"A?":"A","A":"Sol ayağını öne koy."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-5":{"A?":"O","A":{"A":{"A?":"A","A":"Ellerini çırp."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-6":{"A?":"O","A":{"A":{"A?":"A","A":"Sağa ve sola dön."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"step-text-7":{"A?":"O","A":{"A":{"A?":"A","A":"Dansı bitir ve gülümse."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"success-badge":{"A?":"O","A":{"A":{"A?":"A","A":"AKIŞ ŞEMASI USTASI"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"E":{"A?":"P","A":{"C":"#fff1ae","D":0.0,"F":false,"J":false,"G":false,"H":false}},"F":{"A?":"P","A":{"C":"#554600","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"success-heading":{"A?":"O","A":{"A":{"A?":"A","A":"🎉 HARİKA! ALGORİTMAYI TAMAMLADIN!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#45358f","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"ultrabold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":27.0},"L":{"A?":"C","A":-30.0},"M":{"A?":"C","A":0.95}}},"success-message":{"A?":"O","A":{"A":{"A?":"A","A":"Bir algoritmada adımların doğru sırada olması çok önemlidir."},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#31587c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}},"success-subtitle":{"A?":"O","A":{"A":{"A?":"A","A":"Dansın bütün adımlarını doğru sıraya koydun!"},"D":{"A?":"O","A":{"k":{"A?":"D","A":2},"v":{"A?":"O","A":{"A":{"A?":"D","A":2},"B":{"A?":"S","A":{"A":"YAFdJvgJ5TU","B":0,"C":"B"}}}}}},"F":{"A?":"P","A":{"C":"#29305c","D":0.0,"F":false,"J":false,"G":false,"H":false}},"G":{"A?":"A","A":"bold"},"H":{"A?":"A","A":"normal"},"K":{"A?":"C","A":18.0}}}}}}}},"BH":{}}],"I":[]}],"I":[]},"Z":{"A?":"E","M":"tr-TR","O":[],"e":false,"g":[{"A?":"A","K":"PB6DY42XVfwVxxhC","L":"","O":"Akış Şemalarıyla Algoritmayı Gösteriyorum","e":{"A":true}}]},"I":{"A":[{"A":"YACgEZ1cb1Q","B":0,"C":"Arimo","D":[{"style":"BOLD","weight":700,"files":[{"url":"assets/fonts/b07201e0e9fc452103c1c0345b0e7c1d.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":234660}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-771,"yMax":2116},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":32}}},{"style":"REGULAR","weight":400,"files":[{"url":"assets/fonts/834f64ff415fb8f4f5d92d8fd40507e9.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":234332}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-621,"yMax":2007},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":64}}},{"style":"ITALICS","weight":400,"files":[{"url":"assets/fonts/711f50b3a8c00bb7e2e05ef85f982cb6.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":240584}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-621,"yMax":2077},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-425,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":1}}},{"style":"BOLD_ITALICS","weight":700,"files":[{"url":"assets/fonts/0803f40e19a074a5520c2746a6ba3c95.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":237588}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-771,"yMax":2109},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":33}}}],"E":false},{"A":"YAFdJvgJ5TU","B":0,"C":"Alegreya Sans","D":[{"style":"ULTRA_BOLD_ITALICS","weight":800,"files":[{"url":"assets/fonts/c54dc0e2d93e2549713bd94ccf738587.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":131324}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-289,"yMax":1079},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"THIN","weight":250,"files":[{"url":"assets/fonts/d8c19452aa7ad6e985f28add79f3aa5d.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":116596}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-265,"yMax":950},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"LIGHT_ITALICS","weight":300,"files":[{"url":"assets/fonts/a3d258bca5b41cf82f4c9d271ebd337f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":127556}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-264,"yMax":980},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"REGULAR","weight":400,"files":[{"url":"assets/fonts/6314eff89350a9c54c11a9d6eb034dc3.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124164}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-262,"yMax":1012},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"MEDIUM","weight":500,"files":[{"url":"assets/fonts/2a66547d17a0891528a2ea98d46dbdc5.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124712}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-261,"yMax":1032},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"MEDIUM_ITALICS","weight":500,"files":[{"url":"assets/fonts/29b15d53fb2d73c553c05476b6f2a640.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":130980}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-261,"yMax":1028},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"BOLD","weight":700,"files":[{"url":"assets/fonts/901cc26b99faf7fd1ddafcb1cbfa2ddc.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":125156}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-272,"yMax":1059},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":160}}},{"style":"LIGHT","weight":300,"files":[{"url":"assets/fonts/2e4b8e7bb69734326dd2f2dff05b967f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":122396}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-264,"yMax":984},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"HEAVY_ITALICS","weight":900,"files":[{"url":"assets/fonts/d1dcad270f34e9e4800b79e0f034bdd2.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":130000}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-312,"yMax":1113},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"BOLD_ITALICS","weight":700,"files":[{"url":"assets/fonts/4dff39dfed64492c2a0146fe875f057f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":131416}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-274,"yMax":1056},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":161}}},{"style":"THIN_ITALICS","weight":250,"files":[{"url":"assets/fonts/1fdc293bae484f52f5039e62d1d56e6b.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124092}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-265,"yMax":956},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"ULTRA_BOLD","weight":800,"files":[{"url":"assets/fonts/958ccb425038b37f5e41c393dabe3ab0.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":125332}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-285,"yMax":1084},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"ITALICS","weight":400,"files":[{"url":"assets/fonts/50564a2ec84c9218ab75b11789602769.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":129584}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-262,"yMax":1004},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"HEAVY","weight":900,"files":[{"url":"assets/fonts/a408d97e847eda7b92a30c649f7f2aca.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":123404}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-304,"yMax":1126},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}}],"E":false}],"B":[],"C":[],"D":[],"E":[{"A":"https://canva-hosted-embed.com/codelet/DP_587cad1965024bbebd3917232f679ad6/cjrhng1c2jcb1d5x","Q":false,"B":"Canva","D":1789466461855,"E":"\x3ciframe src=\\"https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/index.html?pin_id=dbc5c1c9258d31aeaffd312668dd983b\\" width=\\"1366\\" height=\\"768\\" frameborder=\\"0\\" sandbox=\\"allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox\\" style=\\"width:100%;height:100%;border:0\\">\x3c/iframe>","F":1366,"G":768}],"I":[],"F":[],"H":[],"G":[]},"B":[{"A":"YACgEZ1cb1Q","B":0,"C":"Arimo","D":[{"style":"BOLD","weight":700,"files":[{"url":"assets/fonts/b07201e0e9fc452103c1c0345b0e7c1d.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":234660}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-771,"yMax":2116},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":32}}},{"style":"REGULAR","weight":400,"files":[{"url":"assets/fonts/834f64ff415fb8f4f5d92d8fd40507e9.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":234332}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-621,"yMax":2007},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":64}}},{"style":"ITALICS","weight":400,"files":[{"url":"assets/fonts/711f50b3a8c00bb7e2e05ef85f982cb6.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":240584}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-621,"yMax":2077},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-425,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":1}}},{"style":"BOLD_ITALICS","weight":700,"files":[{"url":"assets/fonts/0803f40e19a074a5520c2746a6ba3c95.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":237588}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":2048,"yMin":-771,"yMax":2109},"hhea":{"ascender":1854,"descender":-434,"lineGap":67},"os2":{"sTypoAscender":1491,"sTypoDescender":-431,"sTypoLineGap":307,"usWinAscent":1854,"usWinDescent":434,"fsSelection":33}}}],"E":false},{"A":"YAFdJvgJ5TU","B":0,"C":"Alegreya Sans","D":[{"style":"ULTRA_BOLD_ITALICS","weight":800,"files":[{"url":"assets/fonts/c54dc0e2d93e2549713bd94ccf738587.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":131324}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-289,"yMax":1079},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"THIN","weight":250,"files":[{"url":"assets/fonts/d8c19452aa7ad6e985f28add79f3aa5d.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":116596}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-265,"yMax":950},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"LIGHT_ITALICS","weight":300,"files":[{"url":"assets/fonts/a3d258bca5b41cf82f4c9d271ebd337f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":127556}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-264,"yMax":980},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"REGULAR","weight":400,"files":[{"url":"assets/fonts/6314eff89350a9c54c11a9d6eb034dc3.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124164}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-262,"yMax":1012},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"MEDIUM","weight":500,"files":[{"url":"assets/fonts/2a66547d17a0891528a2ea98d46dbdc5.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124712}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-261,"yMax":1032},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"MEDIUM_ITALICS","weight":500,"files":[{"url":"assets/fonts/29b15d53fb2d73c553c05476b6f2a640.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":130980}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-261,"yMax":1028},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"BOLD","weight":700,"files":[{"url":"assets/fonts/901cc26b99faf7fd1ddafcb1cbfa2ddc.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":125156}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-272,"yMax":1059},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":160}}},{"style":"LIGHT","weight":300,"files":[{"url":"assets/fonts/2e4b8e7bb69734326dd2f2dff05b967f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":122396}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-264,"yMax":984},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"HEAVY_ITALICS","weight":900,"files":[{"url":"assets/fonts/d1dcad270f34e9e4800b79e0f034bdd2.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":130000}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-312,"yMax":1113},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"BOLD_ITALICS","weight":700,"files":[{"url":"assets/fonts/4dff39dfed64492c2a0146fe875f057f.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":131416}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-274,"yMax":1056},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":161}}},{"style":"THIN_ITALICS","weight":250,"files":[{"url":"assets/fonts/1fdc293bae484f52f5039e62d1d56e6b.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":124092}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-265,"yMax":956},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"ULTRA_BOLD","weight":800,"files":[{"url":"assets/fonts/958ccb425038b37f5e41c393dabe3ab0.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":125332}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-285,"yMax":1084},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}},{"style":"ITALICS","weight":400,"files":[{"url":"assets/fonts/50564a2ec84c9218ab75b11789602769.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":129584}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-262,"yMax":1004},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":129}}},{"style":"HEAVY","weight":900,"files":[{"url":"assets/fonts/a408d97e847eda7b92a30c649f7f2aca.woff","format":"WOFF","unicodeRanges":[],"sizeBytes":123404}],"subsettedFiles":[],"scriptSubsetFiles":[],"metadata":{"head":{"unitsPerEm":1000,"yMin":-304,"yMax":1126},"hhea":{"ascender":900,"descender":-300,"lineGap":0},"os2":{"sTypoAscender":800,"sTypoDescender":-200,"sTypoLineGap":200,"usWinAscent":1126,"usWinDescent":312,"fsSelection":192}}}],"E":false}],"E":[],"F":[],"G":[],"H":[{"A":"https://canva-hosted-embed.com/codelet/DP_587cad1965024bbebd3917232f679ad6/cjrhng1c2jcb1d5x","Q":false,"B":"Canva","D":1789466461855,"E":"\x3ciframe src=\\"https://cjrhng1c2jcb1d5x.canvacode.com/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..cylPeaAgwtR-2_1o.v0rElJWFmMImmVHSX31tdvRWZ2Rf3duw5sIPLw5NP-erfpoWNr3lFQwo8H3lk5S-gOXJc5mZoTP_FEce13FjOONfVcHphyFI1l6N-xPDeF-u6eZpJVgUHsPou9nTCAZrImh0-e9vZLZRXiE1Ivh9VRbHxiTzamyLUv9qzQPmomdqvkf6nbXXswOYTY8UvU4XWYEjEnEE0TUqKiQ6wbkhk2OHSZWCZgF0obtlTlk4XYKX6Z-166p3T20pbmcFbcqGWFlIGWU126P7pqhIVN-nBOSs7KsWt5ogZIhS13M5ojM-0aD3D_G6Pz0LjwYmI2tW86Wb4C5rEVe3uXow2pkIzekf7LLeB7kxyP-A36R_3Zbww3T6bKzGKd6MuhlDJptH5BGmNlr7WmwQy3Cb9KwDcdx5hyQFbPHlyvKea0qn7tdPIl8qEn08XwKCZAwoINxVFbK7wkUDqhOAbgVWqFTdnfvqHvWhfv0IJbrZRNZtBM9-oAT7VBSeVmXvTeCM4A-UevogKuPDjorQwRsTbRUTeijKv-Xe8Q6Hy9M_qWblvb0FI9jmHhkWuK9OP9xzp9iz6qR5WQdf5DbP6iz02XPESzFgNbiZ6D-zJMW6.8-3q1Qqu2ognOVtV1griSA/index.html?pin_id=dbc5c1c9258d31aeaffd312668dd983b\\" width=\\"1366\\" height=\\"768\\" frameborder=\\"0\\" sandbox=\\"allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox\\" style=\\"width:100%;height:100%;border:0\\">\x3c/iframe>","F":1366,"G":768}],"S":[],"K":{},"Q":{"A":false,"B":true,"M":true},"R":false,"W":false,"U":true,"V":true,"X":true,"Y":{"A":false}},"ui":{"N":false,"A":true,"B":"A","C":false,"D":false,"H":false,"K":"A","J":false,"P":false}}'); window['flags'] = JSON.parse('{"df0d6e0a":true,"4675fd09":true,"9e7217ba":true,"4073adf":true,"d2199edc":true,"28fb95f5":true,"d1c88bcc":true,"93dcb4be":true,"35bc6688":true,"978ce15d":150000.0,"f3909acb":true,"de7ef84c":true,"1b9b521c":true,"a5f31b0e":true,"ea152930":true,"6426d63e":false,"cc23b239":true,"eacb4698":true,"b6b6f822":true,"a59560d3":600000.0,"7c939d70":true,"8679f7b1":true}'); window['cmsg'] = window['cmsg'] || { locale: "tr-TR", strings: {} };})();</script><script crossorigin="anonymous" src="assets/4f004f747e7be5c3.runtime.js" defer integrity="sha512-cfptBUa2ULHXTs9SXBJtcJHBkZHqYpLjWZ6ezkY/mrNp5qqLLhXG456gJh9G1c9ZfHt5xZEFCPRqanGKl5IOGA==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script><script crossorigin="anonymous" src="assets/4de0093cd9a5f681.s4le6a.vendor.js" defer integrity="sha512-L8swyCMgN7mX95XerJgG4PSWDsAmrBMAvWwbFMkTiHPPqcCVLpndRQvd1XBtJStwih/i5h+RN/902reB/BH4Rg==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script><script crossorigin="anonymous" src="assets/20a861f6e339ac61.vendor.js" defer integrity="sha512-VuVa1SF+gDIWGZ4pv2zZ7BUYV7yvrn6aR1rZ/8nlbmnOoHzZZ8EcU0sg1WI1r41bRojMEuupapLtV+Mf+1uK7Q==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script><script crossorigin="anonymous" src="assets/f702b3078c07e79a.strings.js" integrity="sha512-MAgi+HvL4lTrHXP5N5CLTb6N/QVxsjwptBVOfiEmzb8rH3ogIB5l4iza4SCw8rHGRyAqH5I+oaRof24DhcrL+g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script><script crossorigin="anonymous" src="assets/974710d14c489ecb.tr-TR.js" integrity="sha512-wm7dapxmtrJUglkmObjmKiyQx+zFpHHbX5NMzCY2TppQ5NHnM2P7Ui46BY36rLvW7k5HVwGnSYjz2DF6Mt1n3g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script><script crossorigin="anonymous" src="assets/f8a1480fcf6884b5.js" defer integrity="sha512-Bxam0IoT+23lXMjJEkznEFTJWpVxnwVeaprtecMrOVxppusvQUJMFAFgQGWVvoPHJWkdHriQjADVPUttEaly/g==" nonce="4ac671e4-49d3-4983-a30f-6c8530312976"></script></body></html>
+    document.addEventListener("pointermove", moveDrag);
+    document.addEventListener("pointerup", endDrag);
+    document.addEventListener("pointercancel", endDrag);
+
+    lucide.createIcons();
+  </script>
+ 
+</body>
+</html>
